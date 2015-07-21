@@ -9,15 +9,13 @@
 </header>
 
 <div class="container">
-  <input type="text" ng-model="newThing"/>
-  <button ng-click="addThing()">Add Item</button>
   <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
-      </ul>
-    </div>
+    <input type="text" name="question" ng-model="question"/>
+    <label>Single<input type="radio" name="type"/></label>
+    <label>Multiple<input type="radio" name="type"/></label>
+    <input type="text" name="answer1" placeholder="answer1" ng-model="answer1"/>
+    <input type="text" name="answer2" placeholder="answer2" ng-model="answer2"/>
+    <button ng-click="addPoll()">Submit</button>
   </div>
 </div>
 

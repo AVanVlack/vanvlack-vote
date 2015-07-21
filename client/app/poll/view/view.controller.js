@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('workspaceApp')
-  .controller('MainCtrl', function ($scope, $http) {
+  .controller('ViewCtrl', function ($scope, $http, $routeParams) {
     $scope.awesomeThings = [];
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
+    $http.get('/api/polls/' + $routeParams.pollID).success(function(pollData) {
+      $scope.pollData = pollData;
     });
 
     $scope.addThing = function() {
@@ -18,5 +18,9 @@ angular.module('workspaceApp')
 
     $scope.deleteThing = function(thing) {
       $http.delete('/api/things/' + thing._id);
+    };
+    
+    $scope.hasUserVoted = function() {
+      
     };
   });

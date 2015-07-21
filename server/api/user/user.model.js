@@ -12,6 +12,7 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   },
+  votedPolls: [],
   hashedPassword: String,
   provider: String,
   salt: String,
@@ -39,7 +40,8 @@ UserSchema
   .get(function() {
     return {
       'name': this.name,
-      'role': this.role
+      'role': this.role,
+      'votedPolls': this.votedPolls
     };
   });
 

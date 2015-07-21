@@ -4,8 +4,8 @@ angular.module('workspaceApp')
   .config(function ($routeProvider) {
     $routeProvider
       .when('/builder', {
-        templateUrl: 'app/poll/builder/create.html',
-        controller: 'createCtrl',
+        templateUrl: 'app/poll/builder/builder.html',
+        controller: 'builderCtrl',
         authenticate: true
       })
       .when('/search', {
@@ -13,8 +13,13 @@ angular.module('workspaceApp')
         controller: 'searchCtrl'
       })
       .when('/user', {
-        templateUrl: 'app/poll/user/view.html',
-        controller: 'viewCtrl',
+        templateUrl: 'app/poll/user/user.html',
+        controller: 'userCtrl',
         authenticate: true
+      })
+      .when('/view/:pollID', {
+        templateUrl: 'app/poll/view/view.html',
+        controller: 'ViewCtrl',
+        authenticate: false
       });
   });
