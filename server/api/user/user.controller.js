@@ -80,6 +80,23 @@ exports.changePassword = function(req, res, next) {
 };
 
 /**
+ * Add user voted on poll.
+ */
+
+exports.addVotedPoll = function(req, res, next) {
+  var userId = req.user._id;
+  var pollID = String(req.body.pollID);
+
+  User.findById(userId, function (err, user) {
+    user.votedPolls.push(pollID);
+    user.save(function(err) {
+      if (err) return validationError(res, err);
+      res.send(200);
+    });
+  });
+};
+
+/**
  * Get my info
  */
 exports.me = function(req, res, next) {

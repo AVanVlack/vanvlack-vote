@@ -1,22 +1,28 @@
 'use strict';
 
 angular.module('workspaceApp')
-  .factory('User', function ($resource) {
+  .factory('User', function($resource) {
     return $resource('/api/users/:id/:controller', {
       id: '@_id'
-    },
-    {
+    }, {
       changePassword: {
         method: 'PUT',
         params: {
-          controller:'password'
+          controller: 'password'
         }
       },
       get: {
         method: 'GET',
         params: {
-          id:'me'
+          id: 'me'
+        }
+      },
+      addVotedPoll: {
+        method: 'PUT',
+        params: {
+          controller: 'vote',
+          id: 'me'
         }
       }
-	  });
+    });
   });

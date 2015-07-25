@@ -93,6 +93,25 @@ angular.module('workspaceApp')
       },
 
       /**
+       * add voted on poll
+       *
+       * @param  {String}   pollID
+       * @param  {Function} callback    - optional
+       * @return {Promise}
+       */
+      addVotedPoll: function(pollID, callback) {
+        var cb = callback || angular.noop;
+
+        return User.addVotedPoll({ id: currentUser._id }, {
+          pollID: pollID
+        }, function(user) {
+          return cb(user);
+        }, function(err) {
+          return cb(err);
+        }).$promise;
+      },
+
+      /**
        * Gets all available info on authenticated user
        *
        * @return {Object} user
