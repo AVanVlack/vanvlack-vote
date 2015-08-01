@@ -1,40 +1,68 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div ng-hide="hasVoted">
   <header class="hero-unit" id="banner">
     <div class="container">
       <h1>{{pollData.question}}</h1>
     </div>
   </header>
 
-  <div class="container">
+  <div class="container" ng-hide="hasVoted || !loggedIn">
     <div class="row">
-      <ul ng-repeat="option in pollData.responses">
-        <li><label><input type="radio" name="options" value="{{option}}" ng-model="$parent.myVote"> {{option}}</label></li>
-      </ul>
-      <button type="button" name="button" ng-click="voteSubmit()">Vote</button>
-      <p>My vote is: {{myVote}}</p>
-    </div>
-    <div class="row">
+      <div class="col-sm-8" id="preview">
+        <form class="tile">
+          <h6 class="text-left">Select one:</h6>
+          <ul class="list-group">
+            <li class="list-group-item text-left" ng-repeat="option in pollData.responses">
+              <div class="radio"
+                <label class="checkbox-inline">
+                  <input type="radio" name="options" value="{{option}}" ng-model="$parent.myVote"> {{option}}</label>
+              </div>
+            </li>
+          </ul>
+          <button ng-click="voteSubmit()" class="btn btn-block btn-lg btn-primary">Vote</button>
+        </form>
+      </div>
+      <div class="col-sm-4" id="build">
+        <div class="tile">
+          <img src="assets/icons/svg/retina.svg" alt="Retina">
+          <h6>Don't want to vote but want to see the results?</h6>
+          <button class="btn btn-block btn-info" ng-click="hasVoted = true">See the numbers</button>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-<div ng-show="hasVoted">
-  <header class="hero-unit" id="banner">
-    <div class="container">
-      <div id="chart"></div>
-    </div>
-  </header>
-
-  <div class="container">
+  <div class="container" ng-show="hasVoted || !loggedIn">
     <div class="row">
-      {{pollData.votes}}
-      <h1>This is where we put data for the poll.</h1>
-      {{currentUser}}
+      <div class="col-sm-6" id="build">
+        <div class="tile">
+          <div id="chart"></div>
+        </div>
+      </div>
+      <div class="col-sm-6" id="preview">
+        <div class="tile">
+          <table class="table text-left">
+            <thead>
+              <tr>
+                <th>Option</td>
+                <th>Votes</td>
+              </tr>
+            </thead>
+            <tr ng-repeat="data in chartData">
+              <td>{{data[0]}}</td>
+              <td>{{data[1]}}</td>
+            </tr>
+            <tr>
+          </table>
+          <!-- url to poll -->
+        </div>
+        <div class="tile">
+          <h6 class="text-info">Copy this link to share</h6>
+          <span id="link">{{linkToPoll}}</span>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
 <footer class="footer">
   <div class="container">

@@ -51,6 +51,7 @@ User.find({}).remove(function() {
 Poll.find({}).remove(function() {
   Poll.create({
     question: "How do you get to work?",
+    dataType: "text",
     comments: [],
     votes: [2,16,28,7],
     responses: [
@@ -61,8 +62,9 @@ Poll.find({}).remove(function() {
     ]
   }, {
     question: "What kind of activity do you enjoy the most?",
+    dataType: "text",
     comments: [],
-    votes: [],
+    votes: [23,13,3,176],
     responses: [
       "Running",
       "Basketball",
@@ -71,8 +73,9 @@ Poll.find({}).remove(function() {
     ]
   }, {
     question: "What kind of snacks do you get at the movies?",
+    dataType: "text",
     comments: [],
-    votes: [],
+    votes: [23,13,3,1,5,2],
     responses: [
       "Popcorn",
       "Candy",
@@ -80,6 +83,19 @@ Poll.find({}).remove(function() {
       "Beer",
       "Hot Dog",
       "Pizza"
+    ]
+  },{
+    question: "How often do you shower?",
+    dataType: "text",
+    comments: [],
+    votes: [23,13,3,1,5,2],
+    responses: [
+      "Once a day",
+      "twice a day or more",
+      "Once a week",
+      "Once a month",
+      "Once a year or more",
+      "What is a shower?",
     ]
   });
 })

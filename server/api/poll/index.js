@@ -7,8 +7,10 @@ var auth = require('../../auth/auth.service');
 var router = express.Router();
 
 router.get('/', controller.index);
+router.get('/new', controller.getNew);
+router.get('/user/:id', auth.isAuthenticated(), controller.getUsers)
 router.get('/:id', controller.show);
-router.post('/', controller.create);
+router.post('/', auth.isAuthenticated(), controller.create);
 router.put('/:id', controller.update);
 router.put('/vote/:id', auth.isAuthenticated(), controller.vote);
 router.patch('/:id', controller.update);

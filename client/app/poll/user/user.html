@@ -2,31 +2,29 @@
 
 <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>Trevote</h1>
-    <p class="lead">Poll and vote for issues, fun, and the unknown.</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+    <img src="/assets/icons/svg/clipboard.svg" alt="Clipboard">
+    <h2>Polls built by you.</h2>
   </div>
 </header>
 
 <div class="container">
-  <h1>This is the user polls. One tab for create and another for voted.</h1>
-  <a href="/builder">Go to builder</a>
-  <input type="text" ng-model="newThing"/>
-  <button ng-click="addThing()">Add Item</button>
   <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
-      </ul>
+    <div class="col-sm-3" ng-repeat="poll in userPolls">
+      <div class="tile">
+        <h3 class="tile-title">{{poll.question}}</h3>
+        <div class="btn-group">
+          <a class="btn  btn-sm btn-info" href="/view/{{poll._id}}">View</a>
+          <button class="btn  btn-sm btn-danger">Delete</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <footer class="footer">
   <div class="container">
-      <p><a href="http://andrewvanvlack.net">Andrew VanVlack</a> |
-        <a href="https://twitter.com/avanvlack">@avanvlack</a> |
-         <a href="https://github.com/AVanVlack/vanvlack-vote/issues">Issues</a></p>
+    <p><a href="http://andrewvanvlack.net">Andrew VanVlack</a> |
+      <a href="https://twitter.com/avanvlack">@avanvlack</a> |
+      <a href="https://github.com/AVanVlack/vanvlack-vote/issues">Issues</a></p>
   </div>
 </footer>

@@ -2,21 +2,23 @@
 
 <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>Trevote</h1>
-    <p class="lead">Poll and vote for issues, fun, and the unknown.</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+    <h1>All Polls</h1>
+
   </div>
 </header>
 <div class="container">
-  <h1>Yaayy it works. This is where we will search.</h1>
-  <input type="text" ng-model="newThing"/>
-  <button ng-click="addThing()">Add Item</button>
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
-      </ul>
+      <div ng-repeat="poll in polls">
+          <span ng-switch="" on="$index % 4">
+            <div class="row" ng-switch-when="0">
+              <div class="col-sm-3" ng-show="polls[$index+0]"><div class="tile"><a href="/view/{{polls[$index+0]._id}}"<h3 class="tile-title">{{polls[$index+0].question}}</h3></a></div></div>
+              <div class="col-sm-3" ng-show="polls[$index+1]"><div class="tile"><a href="/view/{{polls[$index+1]._id}}"<h3 class="tile-title">{{polls[$index+1].question}}</h3></a></div></div>
+              <div class="col-sm-3" ng-show="polls[$index+2]"><div class="tile"><a href="/view/{{polls[$index+2]._id}}"<h3 class="tile-title">{{polls[$index+2].question}}</h3></a></div></div>
+              <div class="col-sm-3" ng-show="polls[$index+3]"><div class="tile"><a href="/view/{{polls[$index+3]._id}}"<h3 class="tile-title">{{polls[$index+3].question}}</h3></a></div></div>
+            </div>
+          </span>
+        </div>
     </div>
   </div>
 </div>

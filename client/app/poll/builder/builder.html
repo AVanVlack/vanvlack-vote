@@ -2,27 +2,69 @@
 
 <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>Trevote</h1>
-    <p class="lead">Poll and vote for issues, fun, and the unknown.</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+    <h1>Lets get some questions answered.</h1>
+    <p class="lead"></p>
   </div>
 </header>
 
 <div class="container">
   <div class="row">
-    <input type="text" name="question" ng-model="question"/>
-    <label>Single<input type="radio" name="type"/></label>
-    <label>Multiple<input type="radio" name="type"/></label>
-    <input type="text" name="answer1" placeholder="answer1" ng-model="answer1"/>
-    <input type="text" name="answer2" placeholder="answer2" ng-model="answer2"/>
-    <button ng-click="addPoll()">Submit</button>
+    <div class="col-sm-6" id="build">
+      <div class="tile">
+        <h5 class="text-left">Question:</h5>
+        <div class="">
+          <input type="text" name="question" class="form-control" placeholder="What would you like to ask?" ng-model="question" />
+        </div>
+        <!-- <label>Single
+          <input type="radio" name="type" class="custom-radio" />
+        </label>
+        <label>Multiple
+          <input type="radio" name="type" class="custom-radio"/>
+        </label> -->
+        <h5 class="text-left">Options:</h5>
+        <div ng-repeat="option in pollOptions">
+          <div class="input-group option_input">
+            <input type="text" class="form-control" placeholder="Option {{$index + 1}}" ng-model="option.value">
+            <span class="input-group-btn">
+              <button class="btn btn-danger" type="button" ng-click="$parent.removeOption($index)">
+                <span class="fui-cross"></span>
+              </button>
+            </span>
+          </div>
+        </div>
+        <button type="button" name="addOption" class="btn btn-sm btn-inverse" ng-click="addOption()">
+          <span class="fa fa-plus fa-lg">&nbsp; Add</span>
+        </button>
+      </div>
+    </div>
+    <div class="col-sm-6" id="preview">
+      <form class="tile">
+        Preview
+        <h3>{{question}}</h3>
+        <ul class="list-group">
+          <li class="list-group-item text-left" ng-repeat="option in pollOptions">
+            <div class="radio"
+              <label class="checkbox-inline">
+                <input type="radio" name="options" value="{{option.value}}" ng-model="$parent.myVote" ng-checked="$index === 0"> {{option.value}}</label>
+            </div>
+          </li>
+        </ul>
+      </form>
+    </div>
   </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <button ng-click="addPoll()" class="btn btn-block btn-lg btn-primary">Open Poll</button>
+      </div>
+    </div>
+
 </div>
+
 
 <footer class="footer">
   <div class="container">
-      <p><a href="http://andrewvanvlack.net">Andrew VanVlack</a> |
-        <a href="https://twitter.com/avanvlack">@avanvlack</a> |
-         <a href="https://github.com/AVanVlack/vanvlack-vote/issues">Issues</a></p>
+    <p><a href="http://andrewvanvlack.net">Andrew VanVlack</a> |
+      <a href="https://twitter.com/avanvlack">@avanvlack</a> |
+      <a href="https://github.com/AVanVlack/vanvlack-vote/issues">Issues</a></p>
   </div>
 </footer>

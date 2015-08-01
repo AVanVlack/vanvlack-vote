@@ -1,17 +1,15 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container">
-  <div class="row">
+  <div class="row" id="login-box">
     <div class="col-sm-12">
-      <h1>Change Password</h1>
+      <h2>Change Password</h2>
     </div>
-    <div class="col-sm-12">
+    <div class="col-sm-12 login-form">
       <form class="form" name="form" ng-submit="changePassword(form)" novalidate>
 
         <div class="form-group">
-          <label>Current Password</label>
-
-          <input type="password" name="password" class="form-control" ng-model="user.oldPassword"
+          <input type="password" name="password" class="form-control login-field" ng-model="user.oldPassword" placeholder="Current Password"
                  mongoose-error/>
           <p class="help-block" ng-show="form.password.$error.mongoose">
               {{ errors.other }}
@@ -19,9 +17,7 @@
         </div>
 
         <div class="form-group">
-          <label>New Password</label>
-
-          <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword"
+          <input type="password" name="newPassword" class="form-control login-field" ng-model="user.newPassword" placeholder="New Password"
                  ng-minlength="3"
                  required/>
           <p class="help-block"

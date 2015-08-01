@@ -1,4 +1,6 @@
-
+#login-box {
+  max-width: 500px;
+}
 .btn-twitter {
   color: #fff;
   background-color: #2daddc;

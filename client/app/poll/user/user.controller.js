@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('workspaceApp')
-  .controller('userCtrl', function ($scope, $http) {
-    $scope.awesomeThings = [];
+  .controller('userCtrl', function ($scope, $http, Auth) {
+    $scope.userPolls = [];
+    $scope.user = Auth.getCurrentUser();
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
+    $http.get('/api/polls/user/' + $scope.user._id).success(function(polls) {
+      $scope.userPolls = polls;
     });
 
     $scope.addThing = function() {

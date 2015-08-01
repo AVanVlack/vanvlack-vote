@@ -11,6 +11,20 @@ exports.index = function(req, res) {
   });
 };
 
+exports.getNew = function(req, res) {
+  Poll.loadRecent(function (err, polls) {
+    if(err) { return handleError(res, err); }
+    return res.json(200, polls);
+  });
+};
+
+exports.getUsers = function(req, res) {
+  Poll.loadUsers(req.params.id, function (err, polls) {
+    if(err) { return handleError(res, err); }
+    return res.json(200, polls);
+  });
+};
+
 // Get a single poll
 exports.show = function(req, res) {
   Poll.findById(req.params.id, function (err, poll) {
@@ -22,9 +36,11 @@ exports.show = function(req, res) {
 
 // Creates a new poll in the DB.
 exports.create = function(req, res) {
-  Poll.create(req.body, function(err, poll) {
-    if(err) { return handleError(res, err); }
-    return res.json(201, poll);
+    var poll = new Poll(_.merge({ author: req.user._id }, req.body));
+    poll.votes = _.range(0, poll.responses.length, 0);
+    poll.save(function(err, poll){
+      if(err) { return handleError(res, err); }
+      return res.json(201, poll);
   });
 };
 

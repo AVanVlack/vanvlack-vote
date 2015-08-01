@@ -4,13 +4,18 @@
 
 #banner {
     border-bottom: none;
-    margin-top: -20px;
+    margin-bottom: 20px;
+    background-color: #00BD9C;
 }
 
 #banner h1 {
     font-size: 60px;
     line-height: 1;
     letter-spacing: -1px;
+}
+
+.tile-title {
+  margin-bottom: 10px;
 }
 
 .hero-unit {
