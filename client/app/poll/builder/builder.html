@@ -10,10 +10,10 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6" id="build">
-      <div class="tile">
+      <form  name="pollBuilder" class="tile">
         <h5 class="text-left">Question:</h5>
         <div class="">
-          <input type="text" name="question" class="form-control" placeholder="What would you like to ask?" ng-model="question" />
+          <input type="text" name="question" class="form-control" placeholder="What would you like to ask?" ng-model="question" required />
         </div>
         <!-- <label>Single
           <input type="radio" name="type" class="custom-radio" />
@@ -23,8 +23,8 @@
         </label> -->
         <h5 class="text-left">Options:</h5>
         <div ng-repeat="option in pollOptions">
-          <div class="input-group option_input">
-            <input type="text" class="form-control" placeholder="Option {{$index + 1}}" ng-model="option.value">
+          <div  class="input-group option_input">
+            <input type="text" class="form-control" placeholder="Option {{$index + 1}}" ng-model="option.value" required>
             <span class="input-group-btn">
               <button class="btn btn-danger" type="button" ng-click="$parent.removeOption($index)">
                 <span class="fui-cross"></span>
@@ -35,7 +35,7 @@
         <button type="button" name="addOption" class="btn btn-sm btn-inverse" ng-click="addOption()">
           <span class="fa fa-plus fa-lg">&nbsp; Add</span>
         </button>
-      </div>
+      </form>
     </div>
     <div class="col-sm-6" id="preview">
       <form class="tile">
@@ -54,7 +54,7 @@
   </div>
     <div class="row">
       <div class="col-sm-6">
-        <button ng-click="addPoll()" class="btn btn-block btn-lg btn-primary">Open Poll</button>
+        <button ng-click="addingPoll = true; addPoll()" ng-disabled="addingPoll || pollBuilder.$invalid " class="btn btn-block btn-lg btn-primary">Open Poll</button>
       </div>
     </div>
 

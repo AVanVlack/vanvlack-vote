@@ -5,19 +5,17 @@ angular.module('workspaceApp')
     $scope.userPolls = [];
     $scope.user = Auth.getCurrentUser();
 
-    $http.get('/api/polls/user/' + $scope.user._id).success(function(polls) {
-      $scope.userPolls = polls;
-    });
-
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
-        return;
-      }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
+    $scope.getUserPolls = function(){
+      $http.get('/api/polls/user/' + $scope.user._id).success(function(polls) {
+        $scope.userPolls = polls;
+      });
     };
 
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
+    $scope.getUserPolls();
+
+    $scope.deletePoll = function(poll) {
+      $http.delete('/api/polls/' + poll._id).success(function(){
+        $scope.getUserPolls();
+      })
     };
   });

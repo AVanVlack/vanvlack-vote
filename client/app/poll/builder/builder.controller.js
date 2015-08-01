@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('workspaceApp')
-  .controller('builderCtrl', function ($scope, $http, Auth) {
+  .controller('builderCtrl', function ($scope, $http, Auth, $location) {
     $scope.pollOptions = [{value: ""}, {value: ""}];
 
 
 
     $scope.addPoll = function() {
+      console.log(this)
       if($scope.newThing === '') {
         return;
       }
@@ -18,7 +19,9 @@ angular.module('workspaceApp')
         author: Auth.getCurrentUser,
         creationDate: Date.now(),
       };
-      $http.post('/api/polls', poll);
+      $http.post('/api/polls', poll).success(function(data){
+        $location.path('/view/' + data._id)
+      });
       //redirect to new poll's view
     };
 

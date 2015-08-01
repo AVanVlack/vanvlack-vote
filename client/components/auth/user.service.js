@@ -16,13 +16,6 @@ angular.module('workspaceApp')
         params: {
           id: 'me'
         }
-      },
-      addVotedPoll: {
-        method: 'PUT',
-        params: {
-          controller: 'vote',
-          id: 'me'
-        }
       }
     });
   });

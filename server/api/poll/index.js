@@ -14,6 +14,6 @@ router.post('/', auth.isAuthenticated(), controller.create);
 router.put('/:id', controller.update);
 router.put('/vote/:id', auth.isAuthenticated(), controller.vote);
 router.patch('/:id', controller.update);
-router.delete('/:id', controller.destroy);
+router.delete('/:id', auth.isAuthenticated(), controller.destroy);
 
 module.exports = router;
