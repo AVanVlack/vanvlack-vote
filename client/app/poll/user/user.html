@@ -2,8 +2,8 @@
 
 <header class="hero-unit" id="banner">
   <div class="container">
-    <img src="/assets/icons/svg/clipboard.svg" alt="Clipboard">
-    <h2>Polls built by you.</h2>
+    <img src="/assets/images/clipboard.svg" alt="Clipboard">
+    <h2>Polls built by you</h2>
   </div>
 </header>
 
@@ -44,6 +44,8 @@
             </div>
           </span>
         </div>
+        <h3 ng-show="userPolls[0] === undefined" class="text-center">You have not created any polls!</h3>
+        <h6 class="text-center">Press the add button in the menu to crate a new poll.</h6>
     </div>
   </div>
 </div>
